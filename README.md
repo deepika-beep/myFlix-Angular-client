@@ -1,3 +1,47 @@
+Description
+
+Build a web application that provides users with access to information about different movies, genres, directors. Users are able to register, update their personal information, deregister and create a list of Favorites movies.
+
+User Stories:
+
+As a user, I want to be able to receive information on movies, genres, directors so that I can learn more about movies I’ve watched or am interested in.
+As a user, I want to have a Favorites movies from the list of movies.
+As a user, I want to access a simple web application with a minimalist interface, displaying only essential information.
+As a user, I want to be able to create a profile so I can save data about my favorite movies.
+As a user, I want to be able to update my personal data.
+As a user, I want to be able to deregister my profile from the web application database.
+
+Key Features:
+Return a list of movies to the user.
+Return data about a single movie by title to the user.
+Return data about movie genres to the user.
+Return data about directors and actors to the user.
+Allow new users to register.
+Allow users to update their data by username.
+Allow existing users to deregister by username.
+Allow users to add and remove movies to their "Favorites" list by movie ID.
+
+Dependecies:
+
+@angular
+
+Dev Dependencies:
+
+angular-cli-ghpages
+eslint
+jasmine-core
+karma
+typedoc
+typescript
+
+Built With:
+Angular
+Angular Material
+GitHub Pages
+JavaScript
+Node.js
+Visual Studio Code
+
 # MyFlixAngularClient
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
