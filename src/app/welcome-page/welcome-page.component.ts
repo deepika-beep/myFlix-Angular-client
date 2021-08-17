@@ -10,7 +10,9 @@ import { MovieCardComponent } from '../movie-card/movie-card.component';
   styleUrls: ['./welcome-page.component.scss']
 })
 export class WelcomePageComponent implements OnInit {
-
+ /**
+   * @param dialog
+   */
   constructor(public dialog:MatDialog) { }
 
   ngOnInit(): void {

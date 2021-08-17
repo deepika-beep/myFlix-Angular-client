@@ -7,7 +7,15 @@ import { FetchApiDataService } from '../fetch-api-data.service'
   templateUrl: './user-profile-update.component.html',
   styleUrls: ['./user-profile-update.component.scss']
 })
+/**
+ * This component will render the Update User Profile form.
+ */
 export class UserProfileUpdateComponent implements OnInit {
+   /**
+   * @param fetchApiData
+   * @param snackBar
+   * @param router
+   */
 @Input() userData= {Username: '', Password: '', Email: '', Birthday: ''}
 user: any = {};
 movies: any = [];

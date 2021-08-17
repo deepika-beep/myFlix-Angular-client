@@ -4,33 +4,49 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserProfileDeleteComponent } from '../user-profile-delete/user-profile-delete.component';
 import { UserProfileUpdateComponent } from '../user-profile-update/user-profile-update.component';
 import { FetchApiDataService } from '../fetch-api-data.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss']
 })
+/**
+ * This component renders the User Profile view.
+ */
 export class UserProfileComponent implements OnInit {
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
   user: any = {};
   movies: any = [];
   favourite: any = [];
-  constructor(public fetchApiData: FetchApiDataService,
+  /**
+   * @param fetchApiData
+   * @param dialog
+   * @param snackBar
+   */
+  constructor(
+    public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar,) { }
-
+    public snackBar: MatSnackBar,
+    public router: Router) { }
+  /**
+   * This method will run the getUser method after the User Profile Component is initialised and rendered.
+   * @returns User object.
+   */
   ngOnInit(): void {
     this.getUser();
   }
+  /**
+   * This method will contact an external API and receive a User object and an array of movie objects.
+   * @returns User object and array of movie objects.
+   */
  getUser(): void {
     const user = localStorage.getItem('user');
     this.fetchApiData.getUser(user).subscribe((resp: any) => {
       this.userData = resp;
       this.user=resp;
       console.log(resp.FavoriteMovies);
-     // this.favourite = resp.FavoriteMovies;
-      console.log(this.favourite);
-      this.userData.Birthday = resp.Birthday.substr(0, 10);
-
+      // console.log(this.favourite);
+      // this.userData.Birthday = resp.Birthday.substr(0, 10);
       this.getMovies();
     })
   }
@@ -40,10 +56,13 @@ export class UserProfileComponent implements OnInit {
       this.filterFavorites();
     });
   }
+  /**
+   * This method will contact an external API,
+   * and delete the movie id from the favorites array
+   */
    removeFavorites(id: string): void {
     this.fetchApiData.deleteUserFavMovie(id).subscribe((resp: any) => {
-
-      this.snackBar.open('Removed from favorites!', 'OK', {
+    this.snackBar.open('${title} has been removed from favorites!', 'OK', {
         duration: 2000,
       });
     });

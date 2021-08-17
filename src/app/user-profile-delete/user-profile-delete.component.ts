@@ -17,7 +17,9 @@ export class UserProfileDeleteComponent implements OnInit {
   }
  removeUserAccount(): void {
     this.fetchApiData.deleteUser().subscribe(
-      (response: any) => {
+      (response: any) =>{
+       // Logs user out
+        localStorage.clear(); 
         this.snackBar.open(
           'Your account has successfully been deleted!',
           'OK',
@@ -25,8 +27,7 @@ export class UserProfileDeleteComponent implements OnInit {
             duration: 2000,
           }
         );
-        // Logs user out
-        localStorage.clear();
+       
       },
       (result) => {
         this.snackBar.open(result, 'OK', {
